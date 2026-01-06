@@ -24,7 +24,7 @@ __on_start() -> (
     set_tps(new_speed);
     print(format([
         'g Speed is ',
-        'b ' + round_to_3dp(new_speed),
+        'b ' + _round_to_3dp(new_speed),
         'w  tps', TPS_DESC,
         'g .'
     ]));
@@ -36,7 +36,7 @@ set_tps(new_speed) -> (
 );
 
 
-round_to_3dp(amount) -> (
+_round_to_3dp(amount) -> (
     round(amount * 1000) / 1000
 );
 
@@ -46,8 +46,8 @@ __on_player_takes_damage(player, amount, source, source_entity) -> (
     set_tps(new_speed);
     print(format([
         'g Speed is ',
-        'b ' + round_to_3dp(new_speed),
-        'r  (+' + round_to_3dp(abs(old_speed - new_speed)) + ')',
+        'b ' + _round_to_3dp(new_speed),
+        'r  (+' + _round_to_3dp(abs(old_speed - new_speed)) + ')',
         'w  tps', TPS_DESC,
         'g , due to ',
         'w ' + query(player, 'name'),
@@ -62,8 +62,8 @@ __on_player_deals_damage(player, amount, entity) -> (
     set_tps(new_speed);
     print(format([
         'g Speed is ',
-        'b ' + round_to_3dp(new_speed),
-        'e  (-' + round_to_3dp(abs(old_speed - new_speed)) + ')',
+        'b ' + _round_to_3dp(new_speed),
+        'e  (-' + _round_to_3dp(abs(old_speed - new_speed)) + ')',
         'w  tps', TPS_DESC,
         'g , due to ',
         'w ' + query(player, 'name'),
