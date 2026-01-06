@@ -6,6 +6,7 @@
 // Stay loaded
 __config() -> (
     {
+        ['scope', 'global'],
         ['stay-loaded', true]
     }
 );
