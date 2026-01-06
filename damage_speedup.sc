@@ -1,4 +1,7 @@
 // When player takes damage, increase tick speed
+// !!! IMPORTANT !!! //
+// This script requires g4mespeed in order to work.
+
 
 // Stay loaded
 __config() -> (
