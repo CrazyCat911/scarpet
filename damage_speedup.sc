@@ -21,7 +21,7 @@ __on_start() -> (
         get(saved, 'speed'),
         20
     );
-    set_tps(new_speed);
+    _set_tps(new_speed);
     print(format([
         'g Speed is ',
         'b ' + _round_to_3dp(new_speed),
@@ -30,7 +30,7 @@ __on_start() -> (
     ]));
 );
 
-set_tps(new_speed) -> (
+_set_tps(new_speed) -> (
     global_speed = new_speed;
     run('tps ' + global_speed);
 );
@@ -43,7 +43,7 @@ _round_to_3dp(amount) -> (
 __on_player_takes_damage(player, amount, source, source_entity) -> (
     old_speed = global_speed;
     new_speed = global_speed + min(amount, query(player, 'health'));
-    set_tps(new_speed);
+    _set_tps(new_speed);
     print(format([
         'g Speed is ',
         'b ' + _round_to_3dp(new_speed),
@@ -59,7 +59,7 @@ __on_player_takes_damage(player, amount, source, source_entity) -> (
 __on_player_deals_damage(player, amount, entity) -> (
     old_speed = global_speed;
     new_speed = max(global_speed - amount, 1);
-    set_tps(new_speed);
+    _set_tps(new_speed);
     print(format([
         'g Speed is ',
         'b ' + _round_to_3dp(new_speed),
